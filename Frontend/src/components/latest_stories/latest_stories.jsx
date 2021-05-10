@@ -22,7 +22,7 @@ export default class latest_stories extends Component{
     <div class="col-lg-3 mb-5 ">
     <h3 class="mt-3">
     <Link className="links" to="/blog">Amazing Knafee!! So It's Tripoli</Link>
-    </h3>
+    </h3>   
     <p className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
     </div>
     <div class=" col-lg-3  ">
