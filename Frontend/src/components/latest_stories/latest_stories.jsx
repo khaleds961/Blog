@@ -15,7 +15,27 @@ export default class latest_stories extends Component{
         return(
 <div className="container">
 <h2 className="row titles">Latest Stories</h2>
-<div class="row ">
+{this.props.stories.map(row => (
+    <div className="row">
+        {row.sub.map(col=>
+               <div className="col-md-6 ">
+                <div className="row">
+                    <div class="col-lg-6 ">
+                    <img src={col.img} class="img-fluid mt-3"></img>
+                    </div>
+                    <div class="col-lg-6">
+                    <h3 class="mt-3">
+                    <Link className="links" to="/blog">{col.title}</Link>
+                    </h3>   
+                    <p className="desc">{col.desc}</p>
+                    </div>
+                </div>
+               </div>       
+            )
+            }
+    </div>
+))}
+{/* <div class="row ">
 <div class="col-lg-3">
     <img src={pic1} class="img-fluid mt-3"></img>
     </div>
@@ -25,6 +45,8 @@ export default class latest_stories extends Component{
     </h3>   
     <p className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
     </div>
+
+
     <div class=" col-lg-3  ">
     <img src={pic2} class="img-fluid mt-3"></img>
     </div>
@@ -55,8 +77,32 @@ export default class latest_stories extends Component{
     </h3>
     <p className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
     </div>
-</div>
+</div> */}
+{/* {this.props.items.map(item => (
+        <div class="row ">
+<div class="col-lg-3">
+    <img src={pic1} class="img-fluid mt-3"></img>
+    </div>
+    <div class="col-lg-3 mb-5 ">
+    <h3 class="mt-3">
+    <Link className="links" to="/blog">Amazing Knafee!! So It's Tripoli</Link>
+    </h3>   
+    <p className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+    </div>
 
+
+    <div class=" col-lg-3  ">
+    <img src={pic2} class="img-fluid mt-3"></img>
+    </div>
+    <div class="col-lg-3  ">
+    <h3 class="mt-3">
+    <a href="#" className="links">Why Do Stars All Look Almost the Same Size?</a>   
+    </h3>
+    <p className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+    </div>
+</div>
+        
+      ))} */}
    
 </div>
         );

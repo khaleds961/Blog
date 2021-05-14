@@ -7,8 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./pages/HomePage/HomePage";
 import Blog_Page from "./components/Blog_Page/Blog";
 import Blog_Write from "./components/Blog_Write/blog_write";
-// import Test from "./components/test";
-
+import Test from "./components/CatPage/CatPage";
 
 
 
