@@ -5,6 +5,16 @@ import { Link } from "react-router-dom";
 import NavBar from "../Nav/Navbar"
 
 export default class Blog_Cat extends Component {
+  state = {
+    posts : []
+  };
+  async componentDidMount(){
+const url ="http://localhost:8000/posts";
+const response = await fetch(url);
+const data = await response.json();
+this.setState({posts:data.result});
+console.log(data);
+  }
   render() {
     return (
         <div>

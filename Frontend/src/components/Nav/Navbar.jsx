@@ -5,26 +5,21 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 
 export default class NavBar extends Component{
-  // state = {username,password}
-  // componentDidMount(){
-  //   this.setState(this.username="omar")
-  //   axios.get('localhost:8080/user/add?username='+$(this.state.username)+'&&password=pass')
-  //   .then(function (response) {
-  //     // handle success
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  //   .then(function () {
-  //     // always executed
-  //   });
-  // }
+  state = {
+    Categories : []
+  };
+  async componentDidMount(){
+const url ="http://localhost:8000/Categories";
+const response = await fetch(url);
+const data = await response.json();
+this.setState({Categories:data.result});
+console.log(data);
+  }
     render(){
         return (
             <div className=".container-fluid ">
              
+        
             <ReactBootSrap.Navbar collapseOnSelect expand="lg" className="NavBars" bg="dark" variant="dark" >
           <ReactBootSrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <ReactBootSrap.Navbar.Collapse id="responsive-navbar-nav">
@@ -39,9 +34,16 @@ export default class NavBar extends Component{
    
               <h4>
               <ReactBootSrap.NavDropdown title="Topics"  id="collasible-nav-dropdown" >
-                <ReactBootSrap.NavDropdown.Item  href="#action/3.1" >ll</ReactBootSrap.NavDropdown.Item>
-                <ReactBootSrap.NavDropdown.Item href="#action/3.2">IT</ReactBootSrap.NavDropdown.Item>
-                <ReactBootSrap.NavDropdown.Item href="#action/3.3">Politics</ReactBootSrap.NavDropdown.Item>
+               
+
+              {this.state.Categories.map( (Categories) => (
+         <ReactBootSrap.NavDropdown.Item  href="#action/3.1" >
+          {Categories.cat_name}
+          </ReactBootSrap.NavDropdown.Item>
+      ))}
+              
+                
+                
                 <ReactBootSrap.NavDropdown.Divider />
                 {/* <ReactBootSrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootSrap.NavDropdown.Item> */}
               </ReactBootSrap.NavDropdown>

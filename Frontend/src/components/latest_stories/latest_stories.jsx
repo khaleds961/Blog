@@ -1,41 +1,44 @@
 import { Component } from "react";
-import React from 'react';
+import React from "react";
 import "./latest_stories.css";
-import pic1 from  "./no.jpg";
+import pic1 from "./no.jpg";
 import pic2 from "./no1.jpg";
 import pic3 from "./sauce.jpg";
 import pic4 from "./vac.jpg";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+export default class latest_stories extends Component {
+  state = {
+    Blogs: [],
+  };
+  async componentDidMount() {
+    const url = "http://localhost:8000/Blogs";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState({ Blogs: data.result });
+    console.log(data);
+  }
+  render() {
+    return (
+      <div className="container">
+        <h2 className="row titles">Latest Stories</h2>
+        {this.state.Blogs.map((Blogs) => (
+          <div className="row">
+            <div class="col-lg-3 ">
+              <img src={pic1} class="img-fluid mt-3"></img>
+            </div>
+            <div class="col-lg-3">
+              <h3 class="mt-3">
+                <Link className="links" to="/blog">
+                  {Blogs.title}
+                </Link>
+              </h3>
+              <p className="desc">{Blogs.description}</p>
+            </div>
+          </div>
+        ))}
 
-
-
-export default class latest_stories extends Component{
-    render(){
-        return(
-<div className="container">
-<h2 className="row titles">Latest Stories</h2>
-{this.props.stories.map(row => (
-    <div className="row">
-        {row.sub.map(col=>
-               <div className="col-md-6 ">
-                <div className="row">
-                    <div class="col-lg-6 ">
-                    <img src={col.img} class="img-fluid mt-3"></img>
-                    </div>
-                    <div class="col-lg-6">
-                    <h3 class="mt-3">
-                    <Link className="links" to="/blog">{col.title}</Link>
-                    </h3>   
-                    <p className="desc">{col.desc}</p>
-                    </div>
-                </div>
-               </div>       
-            )
-            }
-    </div>
-))}
-{/* <div class="row ">
+        {/* <div class="row ">
 <div class="col-lg-3">
     <img src={pic1} class="img-fluid mt-3"></img>
     </div>
@@ -78,7 +81,7 @@ export default class latest_stories extends Component{
     <p className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
     </div>
 </div> */}
-{/* {this.props.items.map(item => (
+        {/* {this.props.items.map(item => (
         <div class="row ">
 <div class="col-lg-3">
     <img src={pic1} class="img-fluid mt-3"></img>
@@ -103,8 +106,7 @@ export default class latest_stories extends Component{
 </div>
         
       ))} */}
-   
-</div>
-        );
-    }
+      </div>
+    );
+  }
 }

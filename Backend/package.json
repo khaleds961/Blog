@@ -33,6 +33,8 @@
     "nodemon": "^2.0.7",
     "rimraf": "^3.0.2",
     "serve-favicon": "^2.5.0",
+    "sql-template-strings": "^2.2.2",
+    "sqlite": "^4.0.22",
     "sqlite3": "^5.0.2"
   }
 }

@@ -14,6 +14,20 @@
     color: white;
     font-size: 32px;
     font-family: "Lucida Console", "Courier New", monospace;
+
+}
+
+#test1{
+    background-color: #007BFF;
+}
+#test2{
+    background-color: #6C757D;
+}
+#test3{
+    background-color: #28A745;
+}
+#test4{
+    background-color: #DC3545;
 }
 .my_row{
     font-weight: 700;

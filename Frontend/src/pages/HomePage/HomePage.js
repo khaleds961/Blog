@@ -10,11 +10,11 @@ import pic4 from "./vac.jpg";
 
 export default class about extends Component {
   render() {
-    let items = [
-      { text: "Lebanon", color: "#DE4251" },
-      { text: "Corona", color: "#39AD53" },
-      { text: "Codi-Tech", color: "#29A9BD" },
-      { text: "Corona", color: "#FFC417" },
+    let LimitCat = [
+      { color: "#DE4251" },
+      { color: "#39AD53" },
+      { color: "#29A9BD" },
+      { color: "#FFC417" },
     ];
 
     let stories = [
@@ -22,15 +22,13 @@ export default class about extends Component {
         sub: [
           {
             title: "Amazing Knafee!! So It's Tripoli",
-            desc:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-            img:pic1,
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+            img: pic1,
           },
           {
             title: "Amazing Knafee!! So It's Tripoli",
-            desc:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-            img:pic1,
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+            img: pic1,
           },
         ],
       },
@@ -38,15 +36,13 @@ export default class about extends Component {
         sub: [
           {
             title: "Amazing Knafee!! So It's Tripoli",
-            desc:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-            img:pic1,
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+            img: pic1,
           },
           {
             title: "Amazing Knafee!! So It's Tripoli",
-            desc:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-            img:pic1,
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+            img: pic1,
           },
         ],
       },
@@ -55,7 +51,7 @@ export default class about extends Component {
     return (
       <div style={{ height: "2000px" }}>
         <NavBar />
-        <Features items={items}></Features>
+        <Features LimitCat={LimitCat}></Features>
         <Latest stories={stories} />
       </div>
     );

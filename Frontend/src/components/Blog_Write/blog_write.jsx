@@ -4,9 +4,12 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Parse from "html-react-parser";
 import NavBar from "../Nav/Navbar";
 import "./blog_write.css";
+import NavBarList from "../Nav/NavBarList"
 
 function Blog_writing() {
+  
   const [text, setText] = useState("");
+
   return (
     <div>
       <NavBar></NavBar>
@@ -22,6 +25,7 @@ function Blog_writing() {
             </input>
           </div>
         </div>
+        
         <div className="row">
           <div className="col-sm-12 col-lg-12 mb-4 ">
             <h2>Please Enter A Short Description</h2>
@@ -34,12 +38,10 @@ function Blog_writing() {
           <div className="row">
           <div class="form-group col-md-4">
           <h2>Topics</h2>
-      <select id="inputState" class="form-control" required>
-        {/* <option selected>Choose...</option> */}
-        <option>Corona</option>
-        <option>Movies</option>
-        <option>B to B</option>
-      </select>
+          <NavBarList
+          style="inputState"
+          />
+
     </div>
         </div>
         <div className="row">
