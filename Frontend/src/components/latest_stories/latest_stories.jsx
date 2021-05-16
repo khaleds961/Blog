@@ -16,20 +16,20 @@ export default class latest_stories extends Component {
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ Blogs: data.result });
-    console.log(data);
+    // console.log(data);
   }
   render() {
     return (
       <div className="container">
         <h2 className="row titles">Latest Stories</h2>
         {this.state.Blogs.map((Blogs) => (
-          <div className="row">
-            <div class="col-lg-3 ">
+          <div className="row" key={Blogs.id}>
+            <div class="col-lg-4 ">
               <img src={pic1} class="img-fluid mt-3"></img>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-7">
               <h3 class="mt-3">
-                <Link className="links" to="/blog">
+                <Link className="links" to={`/blog/${Blogs.id}`}>
                   {Blogs.title}
                 </Link>
               </h3>
@@ -37,7 +37,6 @@ export default class latest_stories extends Component {
             </div>
           </div>
         ))}
-
         {/* <div class="row ">
 <div class="col-lg-3">
     <img src={pic1} class="img-fluid mt-3"></img>

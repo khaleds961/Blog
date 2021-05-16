@@ -114,6 +114,11 @@ const start = async() => {
         }
     })
 
+    app.get("/blog/getblog/:idblog", async (req, res, next) => {
+        const { idblog } = req.params;
+        const result = await controller.getblogbyid(idblog);
+        res.json({ success: true, result });
+      })
 }
 
 

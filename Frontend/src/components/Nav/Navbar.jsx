@@ -13,7 +13,6 @@ const url ="http://localhost:8000/Categories";
 const response = await fetch(url);
 const data = await response.json();
 this.setState({Categories:data.result});
-console.log(data);
   }
     render(){
         return (

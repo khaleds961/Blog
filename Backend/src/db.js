@@ -130,7 +130,19 @@ const initializeDatabase = async () => {
             throw new Error(`couldn't retrieve contacts: ` + e.message);
         }
     }
-
+    const getblogbyid = async (blog_id) => {
+        try {
+          let statement = `SELECT * from post_tbl where id = ${blog_id}`;
+    
+          const rows = await db.all(statement);
+          if (!rows.length) {
+            throw new Error(`no rows found`);
+          }
+          return rows;
+        } catch (e) {
+          throw new Error(`couldn't retrieve about: ` + e.message);
+        }
+      };
     const controller = {
         postsAdmin,
         postsUser,
@@ -141,7 +153,8 @@ const initializeDatabase = async () => {
         messages,
         ChooseCat,
         LimitCat,
-        Blogs
+        Blogs,
+        getblogbyid
     }
 
     return controller;

@@ -21,7 +21,7 @@ function App() {
 <BrowserRouter>
         <Switch>
          <Route component={Home} path="/" exact   />
-          <Route component={Blog_Page} path="/blog"   />
+          <Route component={Blog_Page} path="/blog/:id"   />
           <Route component={Blog_Write} path="/write"   />
           <Route component={Test} path="/test"   />
 
