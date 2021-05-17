@@ -1,131 +1,136 @@
 const app = require("./app");
 const db = require("./db");
 
-const start = async() => {
-    const controller = await db.initializeDatabase()
-    app.get('/', (req, res) => res.send("ok"));
+const start = async () => {
+  const controller = await db.initializeDatabase();
+  app.get("/", (req, res) => res.send("ok"));
 
-    //user post
-    app.get('/posts', async (req, res, next) => {
-        
-        try {
-            const userposts = await controller.postsUser();
-            res.json({  result: userposts });
-        } catch (e) {
-            next(e);
-        }
-    })
-
-    //admin post
-    app.get('/dashboard', async (req, res, next) => {
-        
-        try {
-            const adminposts = await controller.postsAdmin();
-            res.json({  result: adminposts });
-        } catch (e) {
-            next(e);
-        }
-    })
-
-
-    //get messages
-    app.get('/dashboard/messages', async (req, res, next) => {
-        
-        try {
-            const messages = await controller.messages();
-            res.json({result:messages});
-        } catch (e) {
-            next(e);
-        }
-    })
-
-
-    // READ BY CATEGORY
-    app.get('/posts/:category', async (req, res, next) => {
-        const { category } = req.params
-        try {
-            const posts = await controller.getPostCategory(category);
-            res.json({  result: posts });
-        } catch (e) {
-            next(e);
-        }
-    })
-
-    
-      // CREATE POST
-  app.get('/posts/add/create', async (req, res, next) => {
-    const { name, email, category, title,  content,  picture } = req.query;
+  //user post
+  app.get("/posts", async (req, res, next) => {
     try {
-        const result = await controller.createPost({ name, email, category, title,  content, picture });
-        res.json({  result });
+      const userposts = await controller.postsUser();
+      res.json({ result: userposts });
     } catch (e) {
-        next(e);
+      next(e);
     }
-})
-      // CREATE MESSAGE
-  app.get('/message/create', async (req, res, next) => {
+  });
+
+  //admin post
+  app.get("/dashboard", async (req, res, next) => {
+    try {
+      const adminposts = await controller.postsAdmin();
+      res.json({ result: adminposts });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  //get messages
+  app.get("/dashboard/messages", async (req, res, next) => {
+    try {
+      const messages = await controller.messages();
+      res.json({ result: messages });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  // READ BY CATEGORY
+  app.get("/posts/:category", async (req, res, next) => {
+    const { category } = req.params;
+    try {
+      const posts = await controller.getPostCategory(category);
+      res.json({ result: posts });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  // CREATE POST
+  app.get("/posts/add/create", async (req, res, next) => {
+    const { name, email, category, title, content, picture } = req.query;
+    try {
+      const result = await controller.createPost({
+        name,
+        email,
+        category,
+        title,
+        content,
+        picture,
+      });
+      res.json({ result });
+    } catch (e) {
+      next(e);
+    }
+  });
+  // CREATE MESSAGE
+  app.get("/message/create", async (req, res, next) => {
     const { username, email, message } = req.query;
     try {
-        const messages = await controller.createMessage({ username, email, message });
-        res.json({  messages });
+      const messages = await controller.createMessage({
+        username,
+        email,
+        message,
+      });
+      res.json({ messages });
     } catch (e) {
-        next(e);
+      next(e);
     }
-})
+  });
 
-    // DELETE
-    app.get('/dashboard/delete/:id', async (req, res, next) => {
-        const { id } = req.params
-        try {
-            const result = await controller.deletePosts(id);
-            res.json({  result });
-        } catch (e) {
-            next(e);
-        }
-    })
+  // DELETE
+  app.get("/dashboard/delete/:id", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const result = await controller.deletePosts(id);
+      res.json({ result });
+    } catch (e) {
+      next(e);
+    }
+  });
 
-    app.get('/Categories', async (req, res, next) => {
-        const { id } = req.params
-        try {
-            const result = await controller.ChooseCat(id);
-            res.json({  result });
-        } catch (e) {
-            next(e);
-        }
-    })
+  app.get("/Categories", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const result = await controller.ChooseCat(id);
+      res.json({ result });
+    } catch (e) {
+      next(e);
+    }
+  });
 
-    app.get('/LimitCat', async (req, res, next) => {
-        const { id } = req.params
-        try {
-            const result = await controller.LimitCat(id);
-            res.json({  result });
-        } catch (e) {
-            next(e);
-        }
-    })
+  app.get("/LimitCat", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const result = await controller.LimitCat(id);
+      res.json({ result });
+    } catch (e) {
+      next(e);
+    }
+  });
 
-    app.get('/Blogs', async (req, res, next) => {
-        const { id } = req.params
-        try {
-            const result = await controller.Blogs(id);
-            res.json({  result });
-        } catch (e) {
-            next(e);
-        }
-    })
+  app.get("/Blogs", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const result = await controller.Blogs(id);
+      res.json({ result });
+    } catch (e) {
+      next(e);
+    }
+  });
 
-    app.get("/blog/getblog/:idblog", async (req, res, next) => {
-        const { idblog } = req.params;
-        const result = await controller.getblogbyid(idblog);
-        res.json({ success: true, result });
-      })
-}
-
-
+  app.get("/blog/getblog/:idblog", async (req, res, next) => {
+    const { idblog } = req.params;
+    const result = await controller.getblogbyid(idblog);
+    res.json({ success: true, result });
+  });
+  app.get("/cat/:catname", async (req, res, next) => {
+    const { catname } = req.params;
+    const result = await controller.catname(catname);
+    res.json({ success: true, result });
+  });
+};
 
 start();
- 
 
-
-
-app.listen( 8000, () => console.log('server listening on port 8000') );
+app.listen(8000, () => console.log("server listening on port 8000"));

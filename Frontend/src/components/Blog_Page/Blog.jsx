@@ -1,5 +1,6 @@
 import { Component } from "react";
 import NavBar from "../Nav/Navbar";
+import Footer from "../Footer_Ne/footer"
 import pic1 from "./tv.jpg";
 import "./Blog.css";
 
@@ -45,6 +46,7 @@ export default class Try extends Component {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }

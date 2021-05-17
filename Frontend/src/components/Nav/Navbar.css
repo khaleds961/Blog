@@ -15,3 +15,7 @@
 #collasible-nav-dropdown:hover{
     color: gainsboro;
 }
+.drop_links{
+    text-decoration: none;
+    color: black;
+}
