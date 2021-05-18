@@ -155,11 +155,7 @@ const initializeDatabase = async () => {
   const catname = async (catname) => {
     try {
       let statement = `SELECT * from post_tbl where category = '${catname}'`;
-
       const rows = await db.all(statement);
-      if (!rows.length) {
-        throw new Error(`no rows found`);
-      }
       return rows;
     } catch (e) {
       throw new Error(`couldn't retrieve about: ` + e.message);

@@ -36,7 +36,6 @@ export default class NavBar extends Component {
                   <h4>+Write Your Blog</h4>
                 </Link>
               </ReactBootSrap.Nav.Link>
-              {/* <ReactBootSrap.Nav.Link href="#pricing">Pricing</ReactBootSrap.Nav.Link> */}
 
               <h4>
                 <ReactBootSrap.NavDropdown
@@ -63,7 +62,7 @@ export default class NavBar extends Component {
                 </ReactBootSrap.NavDropdown>
               </h4>
             </ReactBootSrap.Nav>
-          
+
             <ReactBootSrap.Form inline>
               <ReactBootSrap.FormControl
                 type="text"

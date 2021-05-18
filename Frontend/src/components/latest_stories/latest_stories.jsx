@@ -1,10 +1,6 @@
 import { Component } from "react";
 import React from "react";
 import "./latest_stories.css";
-import pic1 from "./no.jpg";
-import pic2 from "./no1.jpg";
-import pic3 from "./sauce.jpg";
-import pic4 from "./vac.jpg";
 import { Link } from "react-router-dom";
 
 export default class latest_stories extends Component {
@@ -16,7 +12,6 @@ export default class latest_stories extends Component {
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ Blogs: data.result });
-    // console.log(data);
   }
   render() {
     return (
@@ -25,7 +20,7 @@ export default class latest_stories extends Component {
         {this.state.Blogs.map((Blogs) => (
           <div className="row" key={Blogs.id}>
             <div class="col-lg-4 ">
-              <img src={pic1} class="img-fluid mt-3"></img>
+              <img src={Blogs.picture} class="img-fluid mt-3"></img>
             </div>
             <div class="col-lg-7">
               <h3 class="mt-3">

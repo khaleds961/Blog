@@ -3,8 +3,7 @@ import React from "react";
 import "./features.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import Try from "../Blog_Page/Blog.jsx";
-import Button from "react-bootstrap/Button";
+
 
 export default class features extends Component {
   state = {
