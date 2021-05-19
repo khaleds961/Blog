@@ -13,7 +13,7 @@ function Blog_writing() {
   async function handleSubmit(e) {
     e.nativeEvent.preventDefault();
     let response = await fetch("url", {
-      method: "post",
+      method: "post",             
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),
     });
