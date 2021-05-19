@@ -121,7 +121,7 @@ const initializeDatabase = async () => {
     try {
       const rows = await db.all(statement);
       if (!rows.length) throw new Error(`no rows found`);
-      return rows;
+      return rows;   
     } catch (e) {
       throw new Error(`couldn't retrieve contacts: ` + e.message);
     }
@@ -133,7 +133,7 @@ const initializeDatabase = async () => {
       const rows = await db.all(statement);
       if (!rows.length) throw new Error(`no rows found`);
       return rows;
-    } catch (e) {
+    } catch (e) {    
       throw new Error(`couldn't retrieve contacts: ` + e.message);
     }
   };

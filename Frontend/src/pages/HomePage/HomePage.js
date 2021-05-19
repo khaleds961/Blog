@@ -18,7 +18,7 @@ async componentDidMount() {
 }
 
 getAllBlogs= async()=>{
-  const url =`http://localhost:8000/Blogs`;
+  const url =`http://localhost:8000/Blogs  `;
   const response = await fetch(url);
   const data = await response.json();
   this.setState({ Blogs: data.result });
