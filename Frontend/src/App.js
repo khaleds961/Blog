@@ -5,6 +5,7 @@ import Home from "./pages/HomePage/HomePage";
 import Blog_Page from "./components/Blog_Page/Blog";
 import Blog_Write from "./components/Blog_Write/blog_write";
 import BlogCat from "./components/CatPage/CatPage";
+import AboutUs from "./components/aboutUs/aboutUs";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route component={Blog_Write} path="/write" />
                   
         <Route component={BlogCat} path="/cat/:catname" />
+        <Route component={AboutUs} path="/about" />
       </Switch>
     </BrowserRouter>
   );

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default class NavBar extends Component {
   state = {
     Categories: [],
+    search: ""
   };
   async componentDidMount() {
     const url = "http://localhost:8000/Categories";
@@ -13,7 +14,9 @@ export default class NavBar extends Component {
     const data = await response.json();
     this.setState({ Categories: data.result });
   }
+
   render() {
+    let{search}= this.state;
     return (
       <div className=".container-fluid ">
         <ReactBootSrap.Navbar
@@ -63,15 +66,18 @@ export default class NavBar extends Component {
               </h4>
             </ReactBootSrap.Nav>
 
-            <ReactBootSrap.Form inline>
+            <ReactBootSrap.Form inline
+            >
               <ReactBootSrap.FormControl
                 type="text"
-                placeholder="Search"
+                placeholder="Search..."
                 className="mr-sm-2"
+                name={this.props.name}
+                value={this.props.value}
+                onChange={this.props.onChange}
               />
-              <ReactBootSrap.Button variant="secondary">
-                Search
-              </ReactBootSrap.Button>
+              
+            
             </ReactBootSrap.Form>
           </ReactBootSrap.Navbar.Collapse>
         </ReactBootSrap.Navbar>

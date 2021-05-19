@@ -1,9 +1,23 @@
 const app = require("./app");
 const db = require("./db");
+const path = require("path");
+const multer = require("multer");
+
+const start = async () => {
+  const multerStorage = multer.diskStorage({
+    destination: path.join(__dirname, "../public/images"),
+    filename: (req, file, cb) => {
+      const { fieldname, originalname } = file;
+      const date = Date.now();
+      // filename will be: image-1345923023436343-filename.png
+      const filename = `${fieldname}-${date}-${originalname}`;
+      cb(null, filename);
+    },
+  });
+  const upload = multer({ storage: multerStorage });
 
 const start = async () => {
   const controller = await db.initializeDatabase();
-  app.get("/", (req, res) => res.send("ok"));
 
   //user post
   app.get("/posts", async (req, res, next) => {
@@ -20,6 +34,15 @@ const start = async () => {
     try {
       const adminposts = await controller.postsAdmin();
       res.json({ result: adminposts });
+    } catch (e) {
+      next(e);
+    }
+  });
+  //pending posts
+  app.get("/dashboard/pending", async (req, res, next) => {
+    try {
+      const adminposts = await controller.pendingPosts();
+      res.json({ success: true, result: adminposts });
     } catch (e) {
       next(e);
     }
@@ -47,8 +70,9 @@ const start = async () => {
   });
 
   // CREATE POST
-  app.get("/posts/add/create", async (req, res, next) => {
-    const { name, email, category, title, content, picture } = req.query;
+  app.get("/posts/add/create", upload.single("image"), async (req, res, next) => {
+    const { name, email, category, title, content } = req.query;
+    const image = req.file && req.file.filename;
     try {
       const result = await controller.createPost({
         name,
@@ -56,7 +80,7 @@ const start = async () => {
         category,
         title,
         content,
-        picture,
+        image
       });
       res.json({ result });
     } catch (e) {
@@ -109,19 +133,19 @@ const start = async () => {
     }
   });
 
-  app.get("/Blogs", async (req, res, next) => {
-    const { id } = req.params;
-    try {
-      const result = await controller.Blogs(id);
-      res.json({ result });
-    } catch (e) {
-      next(e);
-    }
-  });
+  // app.get("/Blogs", async (req, res, next) => {
+  //   // const { id } = req.params;
+  //   try {
+  //     const result = await controller.Blogs();
+  //     res.json({ result });
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // });
 
   app.get("/blog/getblog/:idblog", async (req, res, next) => {
     const { idblog } = req.params;
-    const result = await controller.getblogbyid(idblog);
+    const result = await controller.postsID(idblog);
     res.json({ success: true, result });
   });
   app.get("/cat/:catname", async (req, res, next) => {
@@ -129,6 +153,25 @@ const start = async () => {
     const result = await controller.catname(catname);
     res.json({ success: true, result });
   });
+
+  //Search Bar
+  app.get("/search", async (req, res, next) => {
+    const { title } = req.query;
+    const result = await controller.search({title});
+    res.json({ success: true, result });
+  });
+};
+
+//ACCEPT
+app.get("/dashboard/accept/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const result = await controller.acceptPost(id);
+    res.json({ success: true, result });
+  } catch (e) {
+    next(e);
+  }
+});
 };
 
 start();

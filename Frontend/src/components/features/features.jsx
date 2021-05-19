@@ -21,7 +21,7 @@ export default class features extends Component {
 
     return (
       <div class="container">
-        <h2 className="row title">Featured Topics</h2>
+        <h2 className="row title text-dark">Featured Topics</h2>
         <div class="row my_row">
           {LimitCat.map((LimitCat) => (
             <div class="col-lg first_topic" id={"test" + LimitCat.id}>

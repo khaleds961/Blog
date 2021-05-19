@@ -35,7 +35,7 @@ export default class Try extends Component {
 
           <div className="row">
             <div className="col-md-12 col-lg-8">
-              <img className="img-fluid mt-3" src={pic1}></img>
+              <img className="img-fluid mt-3" src={Blogs.picture}></img>
             </div>
           </div>
           <div className="row">

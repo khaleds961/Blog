@@ -44,11 +44,11 @@ export default class BlogCat extends Component {
           {this.state.posts.map((post) => (
             <div className="row mb-4">
               <div class="col-lg-4  ">
-                <img src={pic1} class="img-fluid mt-3"></img>
+                <img src={post.picture} class="img-fluid mt-3"></img>
               </div>
               <div class="col-lg-6">
                 <h3 class="mt-3">
-                  <Link className="links" to="/blog">
+                  <Link className="links" to={`/blog/${post.id}`}>
                     {post.title}
                   </Link>
                 </h3>

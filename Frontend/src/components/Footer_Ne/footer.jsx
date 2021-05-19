@@ -10,7 +10,11 @@ export default class Footer extends Component {
     return (
       <div className="fluid mt-3 bg-dark ">
     <div className="info">
-    <Link className="Nav_links" to="/"><h2>Daily Blogs</h2></Link>© 2021-copyright
+    <Link className="Nav_links" to="/"><p>Daily Blogs</p></Link> 
+    <Link className="Nav_links" to="/about"><p>About Us</p></Link>
+    </div>
+    <div className="copy">
+    © 2021 - Copyright
     </div>
       </div>
     );
