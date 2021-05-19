@@ -1,7 +1,7 @@
 import { Component } from "react";
 import NavBar from "../../components/Nav/Navbar";
 import Features from "../../components/features/features.jsx";
-// import Latest from "../../components/latest_stories/latest_stories.jsx";
+import Latest from "../../components/latest_stories/latest_stories.jsx";
 import Footer from "../../components/Footer_Ne/footer";
 import "../../components/latest_stories/latest_stories";
 import { Link } from "react-router-dom"
@@ -18,7 +18,7 @@ async componentDidMount() {
 }
 
 getAllBlogs= async()=>{
-  const url =`http://localhost:8000/search?title=`;
+  const url =`http://localhost:8000/Blogs`;
   const response = await fetch(url);
   const data = await response.json();
   this.setState({ Blogs: data.result });

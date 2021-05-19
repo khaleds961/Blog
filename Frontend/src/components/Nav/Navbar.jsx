@@ -61,7 +61,6 @@ export default class NavBar extends Component {
                   ))}
 
                   <ReactBootSrap.NavDropdown.Divider />
-                  {/* <ReactBootSrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootSrap.NavDropdown.Item> */}
                 </ReactBootSrap.NavDropdown>
               </h4>
             </ReactBootSrap.Nav>
